@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yuvasri Palanikumar — Data Analyst</title>
+  <meta name="description" content="Portfolio of Yuvasri Palanikumar, Computer Science and Engineering student specializing in Artificial Intelligence and Machine Learning.">
+  <meta name="author" content="Yuvasri Palanikumar">
+  <meta name="theme-color" content="#08090d">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    :root{
+      --bg:#08090d;
+      --surface:#101218;
+      --surface-2:#151821;
+      --surface-3:#1b1f2a;
+      --text:#f4f6fb;
+      --muted:#9aa2b3;
+      --muted-2:#6f7788;
+      --line:rgba(255,255,255,.09);
+      --line-strong:rgba(255,255,255,.15);
+      --violet:#8b7cff;
+      --cyan:#62e6d7;
+      --pink:#e995ff;
+      --gradient:linear-gradient(110deg,#8b7cff 0%,#62e6d7 100%);
+      --max:1180px;
+      --radius:24px;
+      --ease:cubic-bezier(.22,1,.36,1);
+    }
+
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:90px}
+    body{
+      font-family:"Manrope",sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.65;
+      overflow-x:hidden;
+    }
+    body:before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:-2;
+      background:
+        radial-gradient(700px 500px at 8% 5%,rgba(139,124,255,.12),transparent 65%),
+        radial-gradient(650px 500px at 92% 20%,rgba(98,230,215,.07),transparent 65%),
+        radial-gradient(700px 500px at 55% 100%,rgba(233,149,255,.05),transparent 65%);
+    }
+    body:after{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:-1;
+      opacity:.18;
+      background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+      background-size:70px 70px;
+      mask-image:linear-gradient(to bottom,black,transparent 85%);
+    }
+
+    a{color:inherit;text-decoration:none}
+    button{font:inherit}
+    img{max-width:100%;display:block}
+    .container{width:min(var(--max),calc(100% - 40px));margin:auto}
+    section{padding:115px 0;position:relative}
+
+    .mono{
+      font-family:"DM Mono",monospace;
+      font-size:.74rem;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+    }
+
+    /* NAV */
+    .nav{
+      position:fixed;
+      inset:0 0 auto;
+      height:76px;
+      z-index:100;
+      border-bottom:1px solid transparent;
+      transition:.35s var(--ease);
+    }
+    .nav.scrolled{
+      background:rgba(8,9,13,.78);
+      backdrop-filter:blur(20px);
+      border-color:var(--line);
+    }
+    .nav-inner{
+      height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:800;
+      letter-spacing:-.03em;
+    }
+    .brand-mark{
+      width:11px;height:11px;border-radius:50%;
+      background:var(--gradient);
+      box-shadow:0 0 22px rgba(139,124,255,.7);
+    }
+    .nav-links{display:flex;align-items:center;gap:3px}
+    .nav-links a{
+      color:var(--muted);
+      padding:9px 13px;
+      border-radius:10px;
+      font-size:.84rem;
+      transition:.25s;
+    }
+    .nav-links a:hover,.nav-links a.active{
+      color:var(--text);
+      background:rgba(255,255,255,.055);
+    }
+    .nav-button{
+      padding:10px 16px;
+      border:1px solid var(--line-strong);
+      border-radius:12px;
+      background:rgba(255,255,255,.035);
+      font-size:.82rem;
+      font-weight:700;
+      transition:.25s;
+    }
+    .nav-button:hover{border-color:rgba(139,124,255,.6);transform:translateY(-2px)}
+    .menu{
+      display:none;
+      width:42px;height:42px;
+      border:1px solid var(--line);
+      border-radius:12px;
+      background:var(--surface);
+      color:var(--text);
+      cursor:pointer;
+    }
+
+    /* HERO */
+    .hero{min-height:100vh;padding:145px 0 80px;display:flex;align-items:center}
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:80px;
+      align-items:center;
+    }
+    .status{
+      display:inline-flex;
+      align-items:center;
+      gap:9px;
+      padding:7px 12px;
+      border:1px solid rgba(98,230,215,.2);
+      border-radius:999px;
+      color:#b8fff6;
+      background:rgba(98,230,215,.055);
+    }
+    .status-dot{
+      width:7px;height:7px;border-radius:50%;
+      background:var(--cyan);
+      box-shadow:0 0 14px var(--cyan);
+    }
+    .hero h1{
+      font-size:clamp(3.2rem,7vw,6.7rem);
+      line-height:.95;
+      letter-spacing:-.075em;
+      margin:26px 0 26px;
+      max-width:800px;
+    }
+    .hero h1 .outline{
+      color:transparent;
+      -webkit-text-stroke:1px rgba(244,246,251,.42);
+    }
+    .gradient-text{
+      background:var(--gradient);
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+    .hero-sub{
+      max-width:660px;
+      color:var(--muted);
+      font-size:1.08rem;
+    }
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:11px;
+      margin-top:34px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:9px;
+      padding:12px 18px;
+      border:1px solid var(--line-strong);
+      border-radius:13px;
+      background:rgba(255,255,255,.035);
+      color:var(--text);
+      font-size:.84rem;
+      font-weight:700;
+      transition:.3s var(--ease);
+    }
+    .btn:hover{transform:translateY(-3px);border-color:rgba(139,124,255,.6)}
+    .btn.primary{
+      border:0;
+      background:var(--gradient);
+      box-shadow:0 15px 35px -18px rgba(139,124,255,.8);
+    }
+    .hero-meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:25px;
+      margin-top:43px;
+      color:var(--muted-2);
+      font-size:.78rem;
+    }
+    .hero-meta span{display:flex;align-items:center;gap:8px}
+    .hero-meta i{color:var(--cyan)}
+
+    /* HERO PROFILE */
+    .portrait-stage{
+      position:relative;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      min-height:430px;
+    }
+    .portrait-card{
+      width:min(365px,100%);
+      position:relative;
+      padding:18px;
+      border:1px solid var(--line-strong);
+      border-radius:28px;
+      background:rgba(16,18,24,.72);
+      backdrop-filter:blur(18px);
+      box-shadow:0 35px 80px -50px #000;
+      transform:none;
+    }
+    .portrait-card:before{
+      content:"";
+      position:absolute;
+      width:190px;
+      height:190px;
+      border-radius:50%;
+      background:var(--violet);
+      filter:blur(90px);
+      opacity:.18;
+      top:20px;
+      left:50%;
+      transform:translateX(-50%);
+      z-index:-1;
+    }
+    .portrait-top{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:0 2px 14px;
+    }
+    .portrait-top .mono{
+      color:var(--muted-2);
+      font-size:.59rem;
+    }
+    .portrait-status{
+      display:flex;
+      align-items:center;
+      gap:6px;
+      color:#b8fff6;
+      font-size:.61rem;
+      font-family:"DM Mono",monospace;
+    }
+    .portrait-status i{
+      color:var(--cyan);
+      font-size:.43rem;
+      text-shadow:0 0 10px var(--cyan);
+    }
+    .portrait-image{
+      position:relative;
+      width:100%;
+      aspect-ratio:1/1;
+      border-radius:22px;
+      padding:4px;
+      background:linear-gradient(145deg,rgba(139,124,255,.8),rgba(98,230,215,.8));
+    }
+    .portrait-image-inner{
+      width:100%;
+      height:100%;
+      border-radius:19px;
+      overflow:hidden;
+      background:#0c0e14;
+      position:relative;
+    }
+    .portrait-image img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center top;
+    }
+    .portrait-fallback{
+      position:absolute;
+      inset:0;
+      display:none;
+      place-items:center;
+      background:
+        radial-gradient(circle at 50% 35%,rgba(139,124,255,.20),transparent 35%),
+        #0c0e14;
+    }
+    .portrait-fallback span{
+      width:92px;
+      height:92px;
+      display:grid;
+      place-items:center;
+      border-radius:50%;
+      background:var(--gradient);
+      color:#fff;
+      font-size:2rem;
+      font-weight:800;
+      letter-spacing:-.08em;
+      box-shadow:0 18px 50px -20px rgba(139,124,255,.8);
+    }
+    .portrait-info{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      margin-top:17px;
+      padding:0 2px;
+    }
+    .portrait-info h3{
+      font-size:1.08rem;
+      letter-spacing:-.035em;
+    }
+    .portrait-info p{
+      color:var(--muted);
+      font-size:.67rem;
+      margin-top:3px;
+    }
+    .portrait-cgpa{
+      text-align:right;
+      padding-left:15px;
+      border-left:1px solid var(--line);
+      flex:none;
+    }
+    .portrait-cgpa small{
+      display:block;
+      color:var(--muted-2);
+      font:400 .52rem "DM Mono",monospace;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+    }
+    .portrait-cgpa strong{
+      display:block;
+      margin-top:1px;
+      font-size:1.05rem;
+      background:var(--gradient);
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+    /* SECTION HEAD */
+    .section-intro{
+      display:grid;
+      grid-template-columns:.7fr 1.3fr;
+      gap:50px;
+      align-items:end;
+      margin-bottom:55px;
+    }
+    .section-number{color:var(--cyan)}
+    .section-title{
+      font-size:clamp(2rem,4.5vw,3.4rem);
+      line-height:1;
+      letter-spacing:-.055em;
+    }
+    .section-description{
+      color:var(--muted);
+      max-width:650px;
+      margin-top:17px;
+      font-size:.95rem;
+    }
+
+    /* ABOUT */
+    .about-layout{
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:22px;
+    }
+    .about-main,.about-side-card{
+      border:1px solid var(--line);
+      background:rgba(16,18,24,.72);
+      border-radius:var(--radius);
+    }
+    .about-main{padding:38px}
+    .about-main .big-copy{
+      font-size:clamp(1.45rem,2.5vw,2.15rem);
+      line-height:1.35;
+      letter-spacing:-.035em;
+    }
+    .about-main .big-copy span{color:var(--muted)}
+    .about-detail{
+      margin-top:30px;
+      padding-top:24px;
+      border-top:1px solid var(--line);
+      color:var(--muted);
+      font-size:.91rem;
+    }
+    .about-side{display:grid;gap:22px}
+    .about-side-card{padding:27px}
+    .about-side-card .icon{
+      width:42px;height:42px;
+      display:grid;place-items:center;
+      border-radius:13px;
+      background:rgba(139,124,255,.09);
+      border:1px solid rgba(139,124,255,.2);
+      color:var(--violet);
+      margin-bottom:18px;
+    }
+    .about-side-card h3{font-size:1rem;margin-bottom:6px}
+    .about-side-card p{font-size:.82rem;color:var(--muted)}
+
+    /* EXPERIENCE */
+    .experience-list{border-top:1px solid var(--line)}
+    .experience-item{
+      display:grid;
+      grid-template-columns:180px 1fr 130px;
+      gap:35px;
+      padding:34px 0;
+      border-bottom:1px solid var(--line);
+      transition:.3s;
+    }
+    .experience-item:hover{padding-left:12px;padding-right:12px;background:rgba(255,255,255,.018)}
+    .experience-date{color:var(--muted-2);font-size:.75rem;padding-top:5px}
+    .experience-role{font-size:1.25rem;letter-spacing:-.025em}
+    .experience-company{color:var(--cyan);font-size:.84rem;margin-top:4px}
+    .experience-points{margin-top:15px;padding-left:17px}
+    .experience-points li{
+      color:var(--muted);
+      font-size:.87rem;
+      margin-bottom:7px;
+      list-style:disc;
+    }
+    .experience-tech{
+      display:flex;flex-wrap:wrap;gap:7px;margin-top:18px
+    }
+    .tag{
+      display:inline-flex;
+      padding:5px 9px;
+      border:1px solid var(--line);
+      border-radius:7px;
+      color:#aeb6c8;
+      background:rgba(255,255,255,.025);
+      font:400 .68rem "DM Mono",monospace;
+    }
+    .experience-index{
+      text-align:right;
+      color:var(--muted-2);
+      font:400 .75rem "DM Mono",monospace;
+    }
+
+    /* EDUCATION */
+    .education-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:16px;
+    }
+    .education-card{
+      min-height:280px;
+      padding:28px;
+      border:1px solid var(--line);
+      border-radius:22px;
+      background:linear-gradient(145deg,rgba(21,24,33,.92),rgba(12,14,19,.92));
+      position:relative;
+      overflow:hidden;
+      transition:.35s var(--ease);
+    }
+    .education-card:hover{transform:translateY(-6px);border-color:var(--line-strong)}
+    .education-card:after{
+      content:"";
+      position:absolute;
+      width:180px;height:180px;
+      border-radius:50%;
+      background:rgba(139,124,255,.09);
+      filter:blur(35px);
+      right:-100px;bottom:-100px;
+    }
+    .edu-year{color:var(--cyan)}
+    .education-card h3{
+      font-size:1.02rem;
+      line-height:1.35;
+      margin:28px 0 8px;
+    }
+    .degree{color:#c8cdd9;font-size:.84rem}
+    .specialization{color:var(--muted);font-size:.78rem;margin-top:7px}
+    .edu-bottom{
+      position:absolute;
+      left:28px;right:28px;bottom:25px;
+      padding-top:14px;
+      border-top:1px solid var(--line);
+      display:flex;justify-content:space-between;
+    }
+    .edu-bottom small{color:var(--muted-2);font-size:.65rem;text-transform:uppercase;letter-spacing:.08em}
+    .edu-bottom strong{display:block;margin-top:2px;font-size:.88rem}
+
+    /* PROJECTS */
+    .projects-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:18px;
+    }
+    .project-card{
+      position:relative;
+      min-height:385px;
+      padding:30px;
+      border:1px solid var(--line);
+      border-radius:24px;
+      background:var(--surface);
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      transition:.4s var(--ease);
+    }
+    .project-card:first-child{
+      grid-row:span 2;
+      min-height:788px;
+      background:
+        radial-gradient(500px 300px at 90% 10%,rgba(139,124,255,.11),transparent 60%),
+        var(--surface);
+    }
+    .project-card:hover{
+      transform:translateY(-7px);
+      border-color:rgba(139,124,255,.35);
+      box-shadow:0 35px 70px -45px rgba(139,124,255,.65);
+    }
+    .project-number{
+      color:var(--muted-2);
+      font:400 .7rem "DM Mono",monospace;
+    }
+    .project-icon{
+      width:52px;height:52px;
+      border-radius:16px;
+      display:grid;place-items:center;
+      margin:25px 0 25px;
+      color:var(--cyan);
+      background:rgba(98,230,215,.055);
+      border:1px solid rgba(98,230,215,.16);
+      font-size:1.15rem;
+    }
+    .project-card h3{
+      font-size:1.45rem;
+      line-height:1.15;
+      letter-spacing:-.04em;
+      max-width:460px;
+    }
+    .project-card p{
+      color:var(--muted);
+      font-size:.87rem;
+      margin-top:13px;
+      max-width:560px;
+    }
+    .project-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:20px}
+    .project-footer{
+      margin-top:auto;
+      padding-top:28px;
+      display:flex;align-items:center;justify-content:space-between;
+    }
+    .project-date{color:var(--muted-2);font-size:.7rem}
+    .project-link{
+      display:inline-flex;align-items:center;gap:8px;
+      color:var(--text);
+      font-size:.78rem;font-weight:700;
+    }
+    .project-link i{color:var(--cyan);transition:.25s}
+    .project-link:hover i{transform:translate(3px,-3px)}
+
+    /* SKILLS */
+    .skills-layout{
+      display:grid;
+      grid-template-columns:.65fr 1.35fr;
+      gap:55px;
+    }
+    .skills-statement{
+      font-size:clamp(1.6rem,3vw,2.5rem);
+      line-height:1.25;
+      letter-spacing:-.045em;
+    }
+    .skills-statement span{color:var(--muted)}
+    .skills-groups{display:grid;gap:28px}
+    .skill-group{padding-bottom:24px;border-bottom:1px solid var(--line)}
+    .skill-group:last-child{border-bottom:0}
+    .skill-group h3{
+      font-size:.74rem;
+      text-transform:uppercase;
+      letter-spacing:.13em;
+      color:var(--cyan);
+      margin-bottom:13px;
+    }
+    .skill-list{display:flex;flex-wrap:wrap;gap:8px}
+    .skill{
+      padding:8px 11px;
+      border:1px solid var(--line);
+      border-radius:9px;
+      color:#c3c9d6;
+      background:rgba(255,255,255,.025);
+      font-size:.75rem;
+      transition:.25s;
+    }
+    .skill:hover{border-color:rgba(98,230,215,.35);color:var(--text);transform:translateY(-2px)}
+
+    /* CREDENTIALS */
+    .credentials-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      border-top:1px solid var(--line);
+    }
+    .credential{
+      padding:24px 20px;
+      border-bottom:1px solid var(--line);
+      display:flex;gap:18px;
+      transition:.25s;
+    }
+    .credential:nth-child(odd){border-right:1px solid var(--line)}
+    .credential:hover{background:rgba(255,255,255,.02)}
+    .credential-icon{
+      width:42px;height:42px;flex:none;
+      display:grid;place-items:center;
+      border:1px solid var(--line);
+      border-radius:12px;
+      color:var(--violet);
+      background:rgba(139,124,255,.055);
+    }
+    .credential h3{font-size:.9rem;line-height:1.35}
+    .credential p{font-size:.72rem;color:var(--muted-2);margin-top:4px}
+
+    /* CONTACT */
+    .contact-box{
+      position:relative;
+      overflow:hidden;
+      padding:70px;
+      border:1px solid var(--line-strong);
+      border-radius:32px;
+      background:
+        radial-gradient(500px 350px at 100% 0%,rgba(98,230,215,.1),transparent 60%),
+        radial-gradient(500px 350px at 0% 100%,rgba(139,124,255,.12),transparent 60%),
+        var(--surface);
+      text-align:center;
+    }
+    .contact-box h2{
+      font-size:clamp(2.4rem,6vw,4.8rem);
+      line-height:.98;
+      letter-spacing:-.065em;
+    }
+    .contact-box p{color:var(--muted);max-width:570px;margin:18px auto 0}
+    .contact-actions{
+      display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:30px
+    }
+    .contact-details{
+      display:flex;justify-content:center;flex-wrap:wrap;gap:22px;
+      margin-top:28px;color:var(--muted);font-size:.76rem
+    }
+    .contact-details a:hover{color:var(--text)}
+
+    /* FOOTER */
+    footer{padding:30px 0;border-top:1px solid var(--line)}
+    .footer-inner{display:flex;justify-content:space-between;gap:20px;align-items:center}
+    .footer-inner p{color:var(--muted-2);font-size:.72rem}
+    .footer-links{display:flex;gap:15px}
+    .footer-links a{color:var(--muted-2);font-size:.8rem}
+    .footer-links a:hover{color:var(--text)}
+
+    /* BACK TOP */
+    .top{
+      position:fixed;
+      right:24px;bottom:24px;
+      width:45px;height:45px;
+      border:1px solid var(--line-strong);
+      border-radius:13px;
+      background:rgba(16,18,24,.9);
+      color:var(--text);
+      display:grid;place-items:center;
+      cursor:pointer;
+      opacity:0;visibility:hidden;
+      transform:translateY(10px);
+      transition:.3s;
+      z-index:80;
+    }
+    .top.show{opacity:1;visibility:visible;transform:none}
+    .top:hover{background:var(--surface-3);border-color:rgba(139,124,255,.5)}
+
+    /* REVEAL */
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+    .reveal.visible{opacity:1;transform:none}
+
+    /* RESPONSIVE */
+    @media(max-width:980px){
+      .hero-grid,.about-layout,.skills-layout{grid-template-columns:1fr}
+      .hero-grid{gap:60px}
+      .portrait-stage{order:-1}
+      .portrait-card{width:310px}
+      .section-intro{grid-template-columns:1fr;gap:15px}
+      .experience-item{grid-template-columns:140px 1fr}
+      .experience-index{display:none}
+      .education-grid{grid-template-columns:1fr}
+      .education-card{min-height:250px}
+      .project-card:first-child{grid-row:auto;min-height:385px}
+      .skills-layout{gap:40px}
+    }
+    @media(max-width:760px){
+      .container{width:min(100% - 28px,var(--max))}
+      section{padding:82px 0}
+      .nav{height:68px}
+      .nav-links,.nav-button{display:none}
+      .menu{display:block}
+      .hero{padding:115px 0 65px}
+      .hero h1{font-size:clamp(3rem,16vw,5rem)}
+      .portrait-card{width:min(340px,100%);padding:15px}
+      .about-main{padding:27px}
+      .experience-item{grid-template-columns:1fr;gap:9px;padding:28px 0}
+      .experience-date{order:0}
+      .experience-role{font-size:1.08rem}
+      .projects-grid{grid-template-columns:1fr}
+      .project-card,.project-card:first-child{min-height:360px}
+      .credentials-grid{grid-template-columns:1fr}
+      .credential:nth-child(odd){border-right:0}
+      .contact-box{padding:45px 22px}
+      .contact-box h2{font-size:clamp(2.4rem,13vw,4rem)}
+      .footer-inner{flex-direction:column;text-align:center}
+      .top{right:16px;bottom:16px}
+    }
+    @media(prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      *,*:before,*:after{animation:none!important;transition:none!important}
+      .reveal{opacity:1;transform:none}
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="nav" id="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#home">
+        <span class="brand-mark"></span>
+        Yuvasri Palanikumar
+      </a>
+
+      <div class="nav-links">
+        <a href="#home" class="active">Home</a>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <a class="nav-button" href="#contact">Let's connect</a>
+      <button class="menu" id="menu" aria-label="Open navigation menu" aria-expanded="false">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+
+    <div id="mobileMenu" style="display:none;position:absolute;top:68px;left:14px;right:14px;padding:12px;border:1px solid var(--line);border-radius:16px;background:rgba(16,18,24,.97);backdrop-filter:blur(18px);">
+      <a href="#home" style="display:block;padding:12px;color:var(--muted)">Home</a>
+      <a href="#about" style="display:block;padding:12px;color:var(--muted)">About</a>
+      <a href="#experience" style="display:block;padding:12px;color:var(--muted)">Experience</a>
+      <a href="#education" style="display:block;padding:12px;color:var(--muted)">Education</a>
+      <a href="#projects" style="display:block;padding:12px;color:var(--muted)">Projects</a>
+      <a href="#skills" style="display:block;padding:12px;color:var(--muted)">Skills</a>
+      <a href="#contact" style="display:block;padding:12px;color:var(--muted)">Contact</a>
+    </div>
+  </nav>
+
+  <header class="hero" id="home">
+    <div class="container hero-grid">
+      <div class="reveal">
+        <div class="status mono">
+          <span class="status-dot"></span>
+          Open to opportunities · 2027
+        </div>
+
+        <h1>
+          Building with
+          <span class="gradient-text">data.</span>
+          <br>
+          <span class="outline">Designing with purpose.</span>
+        </h1>
+
+        <p class="hero-sub">
+          I'm <strong>Yuvasri Palanikumar</strong>, a passionate technology learner with an interest in Python development, data analytics, data science, machine learning and data engineering. I enjoy transforming raw data into meaningful insights and building practical, user-friendly applications.
+
+I am interested in solving real-world problems using Python, SQL, Excel, Tableau, machine learning and modern software development technologies.</p>
+
+        <div class="hero-actions">
+          <a href="#projects" class="btn primary">
+            Explore projects <i class="fa-solid fa-arrow-down"></i>
+          </a>
+          <a href="https://drive.google.com/file/d/1kWJHTMoN1udsnFejAziOBxVPNFVEmYB3/view?usp=drivesdk" target="_blank" rel="noopener" class="btn">
+            Resume <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/yuvasri-palanikumar-89461728a" target="_blank" rel="noopener" class="btn" aria-label="LinkedIn">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+          <a href="https://github.com/Yuvasri1502" target="_blank" rel="noopener" class="btn" aria-label="GitHub">
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </div>
+
+        <div class="hero-meta">
+          <span><i class="fa-solid fa-location-dot"></i> Madurai, India</span>
+          <span><i class="fa-solid fa-graduation-cap"></i> MCA — Computer Applications</span>
+          <span><i class="fa-solid fa-star"></i> CGPA 8.29</span>
+        </div>
+      </div>
+
+      <div class="portrait-stage reveal">
+        <div class="portrait-card">
+          <div class="portrait-top">
+<span class="portrait-status"><i class="fa-solid fa-circle"></i> AVAILABLE</span>
+          </div>
+
+          <div class="portrait-image">
+            <div class="portrait-image-inner">
+              <img
+                src="assets/profile.jpeg"
+                alt="Portrait of Yuvasri Palanikumar"
+                onerror="this.style.display='none';document.getElementById('portraitFallback').style.display='grid';"
+              >
+              <div class="portrait-fallback" id="portraitFallback">
+                <span>YP</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="portrait-info">
+            <div>
+              <h3>Yuvasri Palanikumar</h3>
+              <p>Python · Data Analytics · Data Science · Machine Learning · Data Engineering</p>
+            </div>
+            <div class="portrait-cgpa">
+              <small>CGPA</small>
+              <strong>8.29</strong>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-intro reveal">
+<div>
+            <h2 class="section-title">A curious learner who likes to understand <span class="gradient-text">how data and technology work.</span></h2>
+            <p class="section-description">From data analysis and visualization to machine learning and software development,
+          I enjoy turning technical concepts into practical solutions.</p>
+          </div>
+        </div>
+
+        <div class="about-layout">
+          <article class="about-main reveal">
+            <p class="big-copy">
+          I am a technology enthusiast interested in
+          <strong>Python Development, Data Analytics, Data Science, Machine Learning and Data Engineering.</strong>
+          <span>
+            I enjoy working with data, building practical applications and exploring
+            how technology can be used to solve real-world problems.
+          </span>
+        </p>
+            <p class="about-detail">
+          My experience includes data cleaning, data analysis, dashboard development,
+          Python programming, SQL, Excel, R Programming, Tableau, Power BI and frontend application development.
+          I have also worked on an enterprise-oriented procurement platform using
+          Angular, TypeScript, HTML, CSS and Bootstrap. I enjoy learning through
+          hands-on projects and continuously improving my technical skills.
+        </p>
+          </article>
+
+          <div class="about-side">
+            <article class="about-side-card reveal">
+              <div class="icon"><i class="fa-solid fa-brain"></i></div>
+              <h3>Data Analytics & Data Science</h3>
+              <p>Data cleaning, exploratory data analysis, visualization, Python, SQL, Excel, Tableau and data-driven problem solving.
+          </p>
+            </article>
+            <article class="about-side-card reveal">
+              <div class="icon"><i class="fa-solid fa-code"></i></div>
+              <h3>Software Development</h3>
+              <p>Full-stack workflows, APIs, dashboards, databases and authentication systems.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <div class="section-intro reveal">
+<div>
+            <h2 class="section-title">Learning by <span class="gradient-text">building.</span></h2>
+            <p class="section-description">Hands-on experience across AI/ML, software development and industry-oriented training.</p>
+          </div>
+        </div>
+
+        <div class="experience-list">
+
+          <article class="experience-item reveal">
+            <div class="experience-date mono">JUN 2026 - Aug 2026</div>
+            <div>
+              <h3 class="experience-role">Python Technology Stack Intern</h3>
+              <div class="experience-company">Infosys Springboard Virtual Internship 7.0</div>
+              <ul class="experience-points">
+                <li>Developed a platform to manage vendor reliability, procurement operations, and supplier performance.</li>
+                <li>Designed Contract Management, Vendor Performance, and Analytics Dashboard modules.</li>
+                <li>Created interactive dashboards to monitor vendor performance, contract status, and procurement analytics.</li></ul>
+              <div class="experience-tech">
+                <span class="tag">Python</span><span class="tag">Angular</span><span class="tag">TypeScript</span><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Bootstrap</span><span class="tag">Chart.js</span>
+              </div>
+            </div>
+            <div class="experience-index">01 / 03</div>
+          </article>
+
+          <article class="experience-item reveal">
+            <div class="experience-date mono">JUN 2026 — SEP 2026</div>
+            <div>
+              <h3 class="experience-role">Data Science Trainee</h3>
+              <div class="experience-company">Infosys Springboard</div>
+              <ul class="experience-points">
+                <li>Selected for Infosys Pragati: Path to Future – Cohort 9.</li>
+                <li>Completed prerequisite training in Statistics and Data Analysis with Python.</li>
+                <li>Participating in Data Science, AI and practical learning sessionss.</li>
+              </ul>
+              <div class="experience-tech">
+                <span class="tag">Data Science</span><span class="tag">Python</span><span class="tag">Machine Learning</span><span class="tag">AI</span><span class="tag">Statistics</span>
+              </div>
+            </div>
+            <div class="experience-index">03 / 03</div>
+          </article>
+
+          <article class="experience-item reveal">
+            <div class="experience-date mono">SEP 2026 - NOV 2026</div>
+            <div>
+              <h3 class="experience-role">Data Analyst Intern</h3>
+              <div class="experience-company">Elysium Group of Companies</div>
+              <ul class="experience-points">
+                <li>Cleaned and analyzed datasets using Excel, SQL, and Python to support business reporting needs.</li>
+                <li>Buit interactive dashboards to visualize key metrics and communicate findings to stakeholders.</li>
+                <li>Prepared reports and visualizations that supported data-driven business insights.</li>
+              </ul>
+              <div class="experience-tech">
+                <span class="tag">Python</span><span class="tag">R Programming</span><span class="tag">SQL</span><span class="tag">Power BI</span><span class="tag">Tableau</span><span class="tag">Excel</span><span class="tag">Pandas</span><span class="tag">NumPy</span><span class="tag">Matplotlib</span><span class="tag">Scikit-learn</span><span class="tag">Data Visualization</span>
+              </div>
+            </div>
+            <div class="experience-index">02 / 03</div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="container">
+        <div class="section-intro reveal">
+<div>
+            <h2 class="section-title">Strong fundamentals, <span class="gradient-text">strong curiosity.</span></h2>
+            <p class="section-description">My academic journey from Computer Science to Mathematics and Computer Applications.</p>
+          </div>
+        </div>
+
+        <div class="education-grid">
+          <article class="education-card reveal">
+            <div class="edu-year mono">2024 — 2026</div>
+            <h3>M Kumarasamay College of Engineering / Anna University</h3>
+            <div class="degree">MCA — Master of Computer Applications</div>
+            <div class="specialization">Computer Applications · Karur</div>
+            <div class="edu-bottom">
+              <div><small>CGPA</small><strong class="gradient-text">8.29</strong></div>
+              <div><small>Degree</small><strong>MCA</strong></div>
+            </div>
+          </article>
+
+          <article class="education-card reveal">
+            <div class="edu-year mono">2021 — 2024</div>
+            <h3>Nadar Saraswathi College of Arts and Science / Mother Teresa University</h3>
+            <div class="degree">Bachelor of Science — Mathematics</div>
+            <div class="specialization">Mathematics · Theni</div>
+            <div class="edu-bottom">
+              <div><small>CGPA</small><strong class="gradient-text">7.21</strong></div>
+              <div><small>Degree</small><strong>Mathematics</strong></div>
+            </div>
+          </article>
+
+          <article class="education-card reveal">
+            <div class="edu-year mono">2021</div>
+            <h3>Nadar Saraswathi Matriculation Higher Secondary School</h3>
+            <div class="degree">Class XII</div>
+            <div class="specialization">Computer Science · Madurai</div>
+            <div class="edu-bottom">
+              <div><small>CGPA</small><strong class="gradient-text">7.9</strong></div>
+              <div><small>Level</small><strong>Class XII</strong></div>
+            </div>
+          </article>
+
+          <article class="education-card reveal">
+            <div class="edu-year mono">2019</div>
+            <h3>Nadar Saraswathi Matriculation Higher Secondary School</h3>
+            <div class="degree">Class X</div>
+            <div class="specialization">Computer Science · Madurai</div>
+            <div class="edu-bottom">
+              <div><small>CGPA</small><strong class="gradient-text">7.3</strong></div>
+              <div><small>Level</small><strong>Class X</strong></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-intro reveal">
+<div>
+            <h2 class="section-title">Things I've <span class="gradient-text">built.</span></h2>
+            <p class="section-description">Selected projects that reflect my interest in AI, computer vision and practical software development.</p>
+          </div>
+        </div>
+
+        <div class="projects-grid">
+
+          <article class="project-card reveal">
+<div class="project-icon"><i class="fa-brands fa-github"></i></div>
+            <h3>AI Open-Source Ecosystem & <br><span class="gradient-text">Developer Tool Intelligence | Power BI</span></h3>
+            <p>- Developed 3 interactive dashboards to analyze GitHub AI repositories, technology adoption, developer tools, project popularity, growth, and project health. Performed data cleaning, transformation, and data modeling using Power Query. Created DAX measures, KPI cards, and interactive visualizations to identify AI technology adoption patterns and repository performance.
+            </p>
+            <div class="project-tags">
+              <span class="tag">Power BI</span><span class="tag">Power Query</span><span class="tag">DAX</span><span class="tag">Data Modelling</span><span class="tag">Data Visualization</span>
+            </div>
+            <div class="project-footer">
+              <span class="project-date">GITHUB PROJECT (SEP 2026 — OCT 2026)</span>
+              <a href="https://github.com/Yuvasri1502/AI-Open-Source-Ecosystem-Intelligence" class="project-link">Power BI Dashboard <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+<div class="project-icon"><i class="fa-solid fa-industry"></i></div>
+            <h3>Vendor Reliability Intelligence Platform <span class="gradient-text">– Vendor Management & Analytics</span></h3>
+            <p>
+              Developed frontend modules for the Vendor Reliability Intelligence Platform using Angular, TypeScript, HTML, CSS, Bootstrap, and Chart.js. Designed Contract Management, Vendor Performance, and Analytics Dashboard pages to display contract information, vendor performance indicators, and procurement analytics through interactive UI elements and charts.
+            </p>
+            <div class="project-tags">
+              <span class="tag">Angular</span><span class="tag">TypeScript</span><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Bootstrap</span><span class="tag">Chart.js</span><span class="tag">Git & GitHub</span>
+            </div>
+            <div class="project-footer">
+              <span class="project-date">FULL-STACK TEAM PROJECT (APR 2026 — JULY 2026)</span>
+              <a href="https://github.com/springboardmentor1085p-blip/Team-1-Vendor-Reliability-Intelligence-Platform-Group-1" class="project-link">Frontend Development <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+<div class="project-icon"><i class="fa-solid fa-bolt"></i></div>
+            <h3>Intelligent Abnormal Electricity Usage Analysis <span class="gradient-text">– Energy Consumption & Anomaly Detection</span></h3>
+            <p>
+              Analyzed residential electricity consumption data to identify abnormal usage patterns and investigate energy consumption trends using Tableau. Designed interactive dashboards to visualize electricity usage, detect unusual consumption behavior, compare household energy patterns, and identify potential opportunities for energy efficiency and future consumption analysis.
+            </p>
+            <div class="project-tags">
+              <span class="tag">Tableau</span><span class="tag">Data Visualization</span><span class="tag">Exploratory Data Analysis</span><span class="tag">Anomaly Detection</span><span class="tag">Energy Analytics</span>
+            </div>
+            <div class="project-footer">
+              <span class="project-date">ENERGY ANALYTICS (NOV-2026)</span>
+              <a href="https://github.com/Yuvasri1502/Intelligent-Abnormal-Electricity-Usage-Analysis" class="project-link">Tableau Dashboard <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+<div class="project-icon"><i class="fa-solid fa-chart-line"></i></div>
+            <h3>Sales Performance & <span class="gradient-text">Order Analysis Dashboard | Excel</span></h3>
+            <p>
+              Developed an interactive Excel dashboard to analyze sales performance, orders, customers, product lines, and regional trends. Created 6 KPI cards and 8 charts to identify sales trends and support data-driven business decisions.
+             </p>
+            <div class="project-tags">
+              <span class="tag">Microsoft Excel</span><span class="tag">PivotTables</span><span class="tag">PivotCharts</span><span class="tag">Excel Formulas</span><span class="tag">Slicers</span><span class="tag">Data Visualization</span>
+            </div>
+            <div class="project-footer">
+              <span class="project-date">SALES PREFORMANCE (OCT-2026)</span>
+              <a href="https://github.com/Yuvasri1502/Sales--Performance-Order-Analysis" class="project-link">Excel Dashboard<i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-intro reveal">
+<div>
+            <h2 class="section-title">My technical <span class="gradient-text">toolkit.</span></h2>
+            <p class="section-description">A practical combination of programming, data analytics, data science, machine learning, databases and development tools.</p>
+          </div>
+        </div>
+
+        <div class="skills-layout">
+          <div class="skills-statement reveal">
+            I enjoy working with technology <span>that turns data into insights, ideas into applications and problems into practical solutions.</span>
+          </div>
+
+          <div class="skills-groups reveal">
+            <div class="skill-group">
+              <h3>Programming Languages</h3>
+              <div class="skill-list">
+                <span class="skill">Python</span><span class="skill">R Programming</span><span class="skill">Java</span><span class="skill">SQL</span><span class="skill">C</span><span class="skill">HTML5</span><span class="skill">CSS3</span><span class="skill">JavaScript</span>
+              </div>
+            </div>
+
+            <div class="skill-group">
+              <h3>Data Analytics</h3>
+              <div class="skill-list">
+                <span class="skill">Excel</span><span class="skill">Python</span><span class="skill">Pandas</span><span class="skill">Numpy</span><span class="skill">Data Cleaning</span><span class="skill">EDA</span><span class="skill">Data Visualization</span><span class="tag">Data Preprocessing</span><span class="tag">Dashboard Development</span><span class="skill">Statistical Analysis</span><span class="skill">Report Generation</span><span class="skill">Data Interpretation</span><span class="skill">Business Insights</span>
+              </div>
+            </div>
+
+            <div class="skill-group">
+              <h3>Data Visualization</h3>
+              <div class="skill-list">
+                <span class="skill">Tableau</span><span class="skill">Power BI</span><span class="skill">Excel Dashboards</span><span class="skill">Matplotlib</span><span class="skill">Seaborn</span><span class="skill">Plotly</span><span class="skill">Charts & Graphs</span>
+                <span class="skill">KPI Dashboards</span>
+              </div>
+            </div>
+
+            <div class="skill-group">
+              <h3>Tools & Platforms</h3>
+              <div class="skill-list">
+                <span class="skill">Git</span><span class="skill">GitHub</span><span class="skill">VS Code</span><span class="skill">Excel</span><span class="skill">Jupyter Notebook</span><span class="skill">MySQL</span>
+              </div>
+            </div>
+
+              </div>
+            </div>
+
+            <div class="skill-group">
+              <h3>Soft Skills</h3>
+              <div class="skill-list">
+                <span class="skill">Problem Solving</span><span class="skill">Collaboration</span><span class="skill">Time Management</span><span class="skill">Self-Motivated</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="credentials">
+      <div class="container">
+        <div class="section-intro reveal">
+<div>
+            <h2 class="section-title">Continuous <span class="gradient-text">learning.</span></h2>
+            <p class="section-description">Certifications and courses that reflect my learning across Python, data analytics, machine learning, data science and software development.</p>
+          </div>
+        </div>
+
+        <div class="credentials-grid">
+          <article class="credential reveal">
+            <div class="credential-icon"><i class="fa-brands fa-python"></i></div>
+            <div><h3>Data Analyst with Python</h3><p>Elysium Academy</p></div>
+          </article>
+          <article class="credential reveal">
+            <div class="credential-icon"><i class="fa-solid fa-chart-column"></i></div>
+            <div><h3>Data Analytics and Data Visualization</h3><p>Data Analytics Training</p></div>
+          </article>
+          <article class="credential reveal">
+            <div class="credential-icon"><i class="fa-solid fa-brain"></i></div>
+            <div><h3>Machine Learning with Python</h3><p>freeCodeCamp · Developer Certification</p></div>
+          </article>
+          <article class="credential reveal">
+            <div class="credential-icon"><i class="fa-solid fa-chart-line"></i></div>
+            <div><h3>Data Analytics Job Simulation</h3><p>Deloitte · Certificate of Completion</p></div>
+          </article>
+          <article class="credential reveal">
+            <div class="credential-icon"><i class="fa-solid fa-database"></i></div>
+            <div><h3>MasterClass in Data Analytics</h3><p>NoviTech Private Limited & Certification</p></div>
+          </article>
+          <article class="credential reveal">
+            <div class="credential-icon"><i class="fa-solid fa-code"></i></div>
+            <div><h3>Object Oriented Programming using Python</h3><p>Infosys Springboard</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-box reveal">
+<h2 style="margin-top:18px">Let's build something <span class="gradient-text">meaningful.</span></h2>
+          <p>
+        I'm always interested in learning, collaborating and working on meaningful opportunities in Python development, data analytics, data science, machine learning/AI and data engineering.
+      </p>
+
+          <div class="contact-actions">
+            <a class="btn primary" href="mailto:yuvasripalanikumar@gmail.com">
+              Say hello <i class="fa-solid fa-paper-plane"></i>
+            </a>
+            <a class="btn" href="https://github.com/Yuvasri1502" target="_blank" rel="noopener">
+              GitHub <i class="fa-brands fa-github"></i>
+            </a>
+            <a class="btn" href="https://www.linkedin.com/in/yuvasri-palanikumar-894b1728a" target="_blank" rel="noopener">
+              LinkedIn <i class="fa-brands fa-linkedin"></i>
+            </a>
+          </div>
+
+          <div class="contact-details">
+            <a href="mailto:yuvasripalanikumar@gmail.com">yuvasripalanikumar@gmail.com</a>
+            <span>•</span>
+            <a href="tel:+919398745825">+91 9150350365</a>
+            <span>•</span>
+            <span>Tamilnadu, India</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Yuvasri. Built with HTML, CSS & JavaScript.</p>
+      <div class="footer-links">
+        <a href="#home">Back to top ↑</a>
+        <a href="https://github.com/Yuvasri1502" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/yuvasri-palanikumar-894b1728a" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+  <button class="top" id="top" aria-label="Back to top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <script>
+    const nav = document.getElementById("nav");
+    const topBtn = document.getElementById("top");
+    const menu = document.getElementById("menu");
+    const mobileMenu = document.getElementById("mobileMenu");
+
+    window.addEventListener("scroll", () => {
+      nav.classList.toggle("scrolled", window.scrollY > 20);
+      topBtn.classList.toggle("show", window.scrollY > 500);
+    });
+
+    topBtn.addEventListener("click", () => {
+      window.scrollTo({top:0,behavior:"smooth"});
+    });
+
+    menu.addEventListener("click", () => {
+      const open = mobileMenu.style.display === "block";
+      mobileMenu.style.display = open ? "none" : "block";
+      menu.setAttribute("aria-expanded", String(!open));
+      menu.innerHTML = open
+        ? '<i class="fa-solid fa-bars"></i>'
+        : '<i class="fa-solid fa-xmark"></i>';
+    });
+
+    mobileMenu.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        mobileMenu.style.display = "none";
+        menu.setAttribute("aria-expanded","false");
+        menu.innerHTML = '<i class="fa-solid fa-bars"></i>';
+      });
+    });
+
+    const sections = document.querySelectorAll("header[id], section[id]");
+    const navItems = document.querySelectorAll(".nav-links a");
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          navItems.forEach(item => item.classList.remove("active"));
+          const active = document.querySelector('.nav-links a[href="#' + entry.target.id + '"]');
+          if(active) active.classList.add("active");
+        }
+      });
+    }, {rootMargin:"-35% 0px -55% 0px"});
+
+    sections.forEach(section => observer.observe(section));
+
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add("visible");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {threshold:.08});
+
+    document.querySelectorAll(".reveal").forEach(el => revealObserver.observe(el));
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
